@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 320px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin: 0;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .header h1 {
+      margin: 0 0 4px 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .header p {
+      margin: 0;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+    
+    .toggle-group {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    
+    .toggle-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .toggle-info {
+      flex: 1;
+    }
+    
+    .toggle-label {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+    
+    .toggle-desc {
+      font-size: 11px;
+      opacity: 0.7;
+      line-height: 1.3;
+    }
+    
+    .toggle-switch {
+      width: 44px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .toggle-switch.active {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .toggle-slider {
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .toggle-switch.active .toggle-slider {
+      transform: translateX(20px);
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 10px;
+      opacity: 0.6;
+    }
+    
+    .icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🧠 AccessibilityAI</h1>
+    <p>Universal web accessibility modes</p>
+  </div>
+  
+  <div class="toggle-group">
+    <div class="toggle-item">
+      <div class="toggle-info">
+        <div class="toggle-label">📖 Dyslexia Mode</div>
+        <div class="toggle-desc">OpenDyslexic font + text-to-speech</div>
+      </div>
+      <div class="toggle-switch" id="dyslexiaToggle">
+        <div class="toggle-slider"></div>
+      </div>
+    </div>
+    
+    <div class="toggle-item">
+      <div class="toggle-info">
+        <div class="toggle-label">🎯 ADHD Mode</div>
+        <div class="toggle-desc">Focus highlighting + distraction reduction</div>
+      </div>
+      <div class="toggle-switch" id="adhdToggle">
+        <div class="toggle-slider"></div>
+      </div>
+    </div>
+    
+    <div class="toggle-item">
+      <div class="toggle-info">
+        <div class="toggle-label">👁️ Low Vision Mode</div>
+        <div class="toggle-desc">High contrast + larger text</div>
+      </div>
+      <div class="toggle-switch" id="lowVisionToggle">
+        <div class="toggle-slider"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    Powered by AI • Works on any website
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

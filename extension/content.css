@@ -1,0 +1,86 @@
+/* Accessibility AI - Content Styles */
+
+/* Dyslexia Mode */
+.accessibility-ai-dyslexia * {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.6 !important;
+}
+
+.accessibility-ai-dyslexia p,
+.accessibility-ai-dyslexia span,
+.accessibility-ai-dyslexia div {
+  word-spacing: 0.1em !important;
+}
+
+/* ADHD Mode */
+.accessibility-ai-adhd {
+  animation: none !important;
+}
+
+.accessibility-ai-adhd *,
+.accessibility-ai-adhd *::before,
+.accessibility-ai-adhd *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+.accessibility-ai-adhd .main,
+.accessibility-ai-adhd [role="main"],
+.accessibility-ai-adhd main,
+.accessibility-ai-adhd article {
+  background: rgba(102, 126, 234, 0.05) !important;
+  border: 2px solid rgba(102, 126, 234, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  margin: 10px !important;
+}
+
+/* Low Vision Mode */
+.accessibility-ai-low-vision {
+  filter: contrast(150%) !important;
+}
+
+.accessibility-ai-low-vision * {
+  font-size: 120% !important;
+  font-weight: 600 !important;
+}
+
+.accessibility-ai-low-vision a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+}
+
+.accessibility-ai-low-vision button {
+  border: 3px solid #000 !important;
+  background: #fff !important;
+  color: #000 !important;
+  min-height: 44px !important;
+  font-size: 16px !important;
+}
+
+.accessibility-ai-low-vision input,
+.accessibility-ai-low-vision textarea,
+.accessibility-ai-low-vision select {
+  border: 2px solid #000 !important;
+  font-size: 16px !important;
+  padding: 12px !important;
+}
+
+/* Focus indicators */
+.accessibility-ai-adhd a:focus,
+.accessibility-ai-adhd button:focus,
+.accessibility-ai-adhd input:focus,
+.accessibility-ai-adhd textarea:focus,
+.accessibility-ai-adhd select:focus {
+  outline: 3px solid #667eea !important;
+  outline-offset: 2px !important;
+  background: rgba(102, 126, 234, 0.1) !important;
+}
+
+/* TTS hover effect */
+.accessibility-ai-dyslexia [data-tts-enabled]:hover {
+  background: rgba(102, 126, 234, 0.1) !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+}

@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        dyslexic: ['OpenDyslexic', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +61,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        dyslexia: {
+          DEFAULT: "hsl(var(--dyslexia-bg))",
+          foreground: "hsl(var(--dyslexia-text))",
+          accent: "hsl(var(--dyslexia-accent))",
+        },
+        adhd: {
+          DEFAULT: "hsl(var(--adhd-bg))",
+          foreground: "hsl(var(--adhd-text))",
+          focus: "hsl(var(--adhd-focus))",
+          "focus-glow": "hsl(var(--adhd-focus-glow))",
+        },
+        "low-vision": {
+          DEFAULT: "hsl(var(--low-vision-bg))",
+          foreground: "hsl(var(--low-vision-text))",
+          accent: "hsl(var(--low-vision-accent))",
+          border: "hsl(var(--low-vision-border))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +101,19 @@ export default {
             height: "0",
           },
         },
+        "gradient-x": {
+          "0%, 100%": {
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-position": "100% 50%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "gradient-x": "gradient-x 15s ease infinite",
       },
     },
   },

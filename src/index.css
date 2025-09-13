@@ -1,42 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=OpenDyslexic:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Accessibility-focused design system with semantic tokens */
 
 @layer base {
   :root {
+    /* Core brand colors - accessibility focused */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 225 12% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 225 12% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 225 12% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Accessible primary palette */
+    --primary: 242 100% 63%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 242 100% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 225 12% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 14% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 268 100% 70%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 242 100% 63%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Accessibility mode colors */
+    --dyslexia-bg: 49 100% 96%;
+    --dyslexia-text: 45 100% 15%;
+    --dyslexia-accent: 45 100% 45%;
+
+    --adhd-bg: 210 25% 98%;
+    --adhd-text: 210 25% 15%;
+    --adhd-focus: 142 76% 36%;
+    --adhd-focus-glow: 142 76% 80%;
+
+    --low-vision-bg: 0 0% 8%;
+    --low-vision-text: 60 100% 90%;
+    --low-vision-accent: 60 100% 70%;
+    --low-vision-border: 0 0% 25%;
+
+    /* Professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-hero: linear-gradient(135deg, hsl(242 100% 63%) 0%, hsl(268 100% 70%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
+
+    /* Spacing scale */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -92,14 +128,75 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Accessibility mode styles */
+  .dyslexia-mode {
+    --background: var(--dyslexia-bg);
+    --foreground: var(--dyslexia-text);
+    --card: var(--dyslexia-bg);
+    --card-foreground: var(--dyslexia-text);
+  }
+
+  .adhd-mode {
+    --background: var(--adhd-bg);
+    --foreground: var(--adhd-text);
+    --card: var(--adhd-bg);
+    --card-foreground: var(--adhd-text);
+  }
+
+  .low-vision-mode {
+    --background: var(--low-vision-bg);
+    --foreground: var(--low-vision-text);
+    --card: var(--low-vision-bg);
+    --card-foreground: var(--low-vision-text);
+    --border: var(--low-vision-border);
+  }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-[var(--transition-smooth)];
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    transition: var(--transition-smooth);
+  }
+
+  .dyslexia-font {
+    font-family: 'OpenDyslexic', sans-serif !important;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+  }
+
+  .adhd-focus {
+    box-shadow: 0 0 0 3px hsl(var(--adhd-focus-glow));
+    border: 2px solid hsl(var(--adhd-focus));
+  }
+
+  .low-vision-text {
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1.7;
+  }
+}
+
+@layer components {
+  .accessibility-toggle {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full;
+    @apply bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+
+  .accessibility-toggle[data-state="checked"] {
+    @apply bg-primary;
+  }
+
+  .accessibility-toggle-thumb {
+    @apply inline-block h-4 w-4 transform rounded-full bg-background shadow-lg;
+    @apply transition-transform translate-x-1;
+  }
+
+  .accessibility-toggle[data-state="checked"] .accessibility-toggle-thumb {
+    @apply translate-x-6;
   }
 }
